@@ -1,0 +1,175 @@
+/* ── BOTÕES ─────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-family: var(--fonte-corpo);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: var(--transicao);
+}
+
+.btn-primario  { background: var(--cor-primaria); color: #fff; }
+.btn-primario:hover { background: #1e3e2a; transform: translateY(-1px); }
+
+.btn-acento    { background: var(--cor-acento); color: #fff; }
+.btn-acento:hover { background: #b3762f; }
+
+.btn-secundario { background: var(--cor-card); color: var(--cor-texto); border: 1px solid var(--cor-borda); }
+.btn-secundario:hover { background: var(--cor-fundo); }
+
+.btn-perigo    { background: var(--cor-cancelado-bg); color: var(--cor-cancelado); border: 1px solid #f5c6c4; }
+.btn-sm        { padding: 6px 16px; font-size: 0.82rem; }
+
+/* ── BADGES DE STATUS ────────────────────── */
+/* Pequenas etiquetas coloridas para indicar o status */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--raio-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* O ponto colorido antes do texto */
+.badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+.badge-confirmado { background: var(--cor-confirmado-bg); color: var(--cor-confirmado); }
+.badge-pendente   { background: var(--cor-pendente-bg);   color: var(--cor-pendente); }
+.badge-cancelado  { background: var(--cor-cancelado-bg);  color: var(--cor-cancelado); }
+
+/* ── TABELA ──────────────────────────────── */
+.tabela-container {
+  background: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  overflow: hidden;    /* faz o border-radius funcionar nas bordas da tabela */
+}
+
+.tabela-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+table { width: 100%; border-collapse: collapse; }
+
+thead th {
+  padding: 10px 24px;
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cor-texto-suave);
+  background: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+tbody tr { border-bottom: 1px solid #f0ebe4; transition: var(--transicao); }
+tbody tr:hover { background: var(--cor-fundo); }
+tbody td { padding: 14px 24px; font-size: 0.9rem; }
+
+/* ── FORMULÁRIO ─────────────────────────── */
+.form-card { background: var(--cor-card); border: 1px solid var(--cor-borda); border-radius: var(--raio-lg); }
+
+.form-card-header { padding: 16px 24px; border-bottom: 1px solid var(--cor-borda); background: var(--cor-fundo); }
+.form-card-header h3 { font-family: var(--fonte-display); font-size: 1.2rem; }
+
+.form-card-body { padding: 24px; }
+
+/* Grid de 2 colunas para os campos do formulário */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-grid .col-full { grid-column: 1 / -1; } /* ocupa as 2 colunas */
+
+.form-grupo { display: flex; flex-direction: column; gap: 6px; }
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--cor-texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-input, .form-select, .form-textarea {
+  padding: 10px 14px;
+  border: 1.5px solid var(--cor-borda);
+  border-radius: 12px;
+  font-family: var(--fonte-corpo);
+  font-size: 0.92rem;
+  background: var(--cor-fundo);
+  transition: var(--transicao);
+  width: 100%;
+}
+
+/* Estado de foco: muda cor da borda e adiciona sombra azulada */
+.form-input:focus, .form-select:focus { outline: none; border-color: var(--cor-primaria); background: #fff; box-shadow: 0 0 0 3px #e8f0ea; }
+.form-input.erro, .form-select.erro   { border-color: var(--cor-cancelado); }
+.form-erro { font-size: 0.78rem; color: var(--cor-cancelado); }
+
+.form-footer { display: flex; gap: 8px; justify-content: flex-end; padding: 16px 24px; border-top: 1px solid var(--cor-borda); background: var(--cor-fundo); }
+
+/* ── MODAL ───────────────────────────────── */
+/* Overlay escurece o fundo */
+.modal-overlay {
+  position: fixed;
+  inset: 0;              /* top:0 right:0 bottom:0 left:0 */
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.15s ease;
+}
+
+.modal { background: var(--cor-card); border-radius: var(--raio-lg); width: 100%; max-width: 700px; max-height: 90vh; overflow-y: auto; animation: slideUp 0.2s ease; }
+
+/* Animações de entrada */
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--cor-borda); }
+.modal-fechar { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; border: none; background: #f0ebe4; cursor: pointer; transition: var(--transicao); }
+.modal-fechar:hover { background: var(--cor-borda); }
+
+/* ── ALERTAS ─────────────────────────────── */
+.alerta { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 12px; font-size: 0.88rem; margin-bottom: 16px; }
+.alerta-sucesso { background: var(--cor-confirmado-bg); color: var(--cor-confirmado); border: 1px solid #c3d9c7; }
+.alerta-erro    { background: var(--cor-cancelado-bg);  color: var(--cor-cancelado);  border: 1px solid #f5c6c4; }
+
+/* ── LOADING ─────────────────────────────── */
+.loading-container { display: flex; align-items: center; justify-content: center; padding: 48px; color: var(--cor-texto-suave); gap: 8px; }
+
+/* Spinner: borda que gira */
+.spinner { width: 24px; height: 24px; border: 2.5px solid var(--cor-borda); border-top-color: var(--cor-primaria); border-radius: 50%; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── FILTROS ─────────────────────────────── */
+.filtros-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+
+.filtro-chip {
+  padding: 6px 14px;
+  border-radius: var(--raio-pill);
+  border: 1.5px solid var(--cor-borda);
+  background: var(--cor-card);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: var(--transicao);
+  color: var(--cor-texto-suave);
+  font-family: var(--fonte-corpo);
+}
+.filtro-chip:hover { border-color: var(--cor-primaria); color: var(--cor-primaria); }
+.filtro-chip.ativo { background: var(--cor-primaria); border-color: var(--cor-primaria); color: #fff; }
+
+/* ── PAGINAÇÃO ───────────────────────────── */
+.paginacao { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-top: 1px solid var(--cor-borda); font-size: 0.85rem; color: var(--cor-texto-suave); }
+.paginacao-btns { display: flex; gap: 4px; }

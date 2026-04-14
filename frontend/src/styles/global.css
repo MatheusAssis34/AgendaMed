@@ -1,0 +1,42 @@
+/* Importa fontes do Google */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* :root define variáveis CSS disponíveis em todo o projeto */
+:root {
+  --cor-fundo: #f5f0eb;
+  --cor-card: #ffffff;
+  --cor-primaria: #2d5a3d;        /* verde escuro */
+  --cor-acento: #c8873a;          /* laranja */
+  --cor-texto: #1a1a18;
+  --cor-texto-suave: #5c5c52;
+  --cor-borda: #ddd6cc;
+
+  /* Status das consultas */
+  --cor-confirmado: #2d5a3d;
+  --cor-confirmado-bg: #e8f0ea;
+  --cor-pendente: #8a6500;
+  --cor-pendente-bg: #fef9e7;
+  --cor-cancelado: #8b2626;
+  --cor-cancelado-bg: #fdecea;
+
+  --fonte-display: 'Fraunces', serif;   /* títulos */
+  --fonte-corpo: 'DM Sans', sans-serif; /* texto normal */
+
+  --raio-md: 12px;
+  --raio-lg: 20px;
+  --raio-pill: 999px;
+
+  --sombra-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --sombra-md: 0 4px 12px rgba(0,0,0,0.08);
+
+  --transicao: all 0.2s ease;
+}
+
+/* Reset básico */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--fonte-corpo);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+}
