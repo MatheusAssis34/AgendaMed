@@ -39,7 +39,7 @@ export default function FormularioConsulta({ consulta, aoSalvar, aoCancelar}) {
 
         if (name === "medico"){
 
-            const med = medico.find((m) => m.nome === value);
+            const med = medicos.find((m) => m.nome === value);
             setForm((f) => ({...f, medico: value, especialidade: med?.especialidade || "", horario: ""}));
         }else{
             setForm((f) => ({ ...f, [name]: value}));
@@ -110,13 +110,76 @@ export default function FormularioConsulta({ consulta, aoSalvar, aoCancelar}) {
                                 onChange={handleChange}
                             >
                                 <option value=""> Selecione...</option>
-                                {medicos.map((m))=>(
+                                {medicos.map((m) => (
                                     <option key={m.id} value={m.nome}>{m.nome}</option>
-                                )}
+                                ))}
                             </select>
+                            {erros.medico && <span className="form-erro">{erros.medico}</span>}
+                        </div>
+
+                        <div className="form-grupo">
+                            <label className="form-label">Especialidade</label>
+                            <input 
+                                name="especialidade"
+                                className="form-input"
+                                value={form.especialidade}
+                                readOnly 
+                                style={{ opacity: 0.7 }}
+                             />   
+                        </div>
+
+                        <div className="form-grupo">
+                            <label className="form-grupo">Data </label>
+                            <input 
+                                type="date"
+                                name="data"
+                                className={`form-inpu ${erros.data ? "erro" : ""}`}
+                                value={form.data}
+                                onChange={handleChange}
+                                min={new Date().toISOString().split("T")[0]}
+                              />
+                              {erros.data && <span className="form-erro">{erros.data}</span>}  
+                        </div>
+
+                        <div className="form-grupo">
+                            <label className="form-label">Horário *</label>
+                            <select
+                            name="horario"
+                            className={`form-select ${erros.horario ? "erro" : ""}`}
+                            value={form.horario}
+                            onChange={handleChange}
+                            disabled={!form.medico || !form.data} 
+                            >
+                            <option value="">
+                                {!form.medico || !form.data ? "Selecione médico e data antes" : "Selecione..."}
+                            </option>
+                            {horariosDisponiveis.map((h) => (
+                                <option key={h} value={h}>{h}</option>
+                            ))}
+                            </select>
+                            {erros.horario && <span className="form-erro">{erros.horario}</span>}
+                        </div>
+
+                        <div className="form-grupo">
+                            <label className="form-label">Telefone</label>
+                            <input name="telefone" className="form-input" value={form.telefone} onChange={handleChange} placeholder="(86) 99999-0000" />
+                        </div>
+
+                        <div className="form-grupo col-full">
+                            <label className="form-label">Observações</label>
+                            <textarea name="observacoes" className="form-textarea" value={form.observacoes} onChange={handleChange} style={{ resize: "vertical", minHeight: 80 }} />
+                        </div>
                         </div>
                     </div>
-                </div>
-            </div>
+
+                    <div className="form-footer">
+                        <button className="btn btn-secundario" onClick={aoCancelar} disabled={salvando}>
+                        Cancelar
+                        </button>
+                        <button className="btn btn-primario" onClick={handleSubmit} disabled={salvando}>
+                        {salvando ? "Salvando..." : modoEdicao ? "Salvar" : "Agendar"}
+                        </button>
+                    </div>                
+                </div>        
         )
     };
