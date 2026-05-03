@@ -1,70 +1,145 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Sistema de agendamento de consultas médicas com React no frontend e Node.js no backend.
+ 
+---
+ 
+##  Sobre o projeto
+ 
+O MedAgenda permite gerenciar consultas médicas de forma simples: agendar, confirmar, cancelar e acompanhar o histórico de atendimentos. O sistema verifica conflitos de horário automaticamente e exibe um dashboard com estatísticas em tempo real.
+ 
+---
+ 
+##  Funcionalidades
+ 
+- Listar consultas com filtro por status (pendente, confirmado, cancelado)
+- Busca em tempo real por paciente ou médico
+- Agendar e editar consultas via modal
+- Verificação automática de conflito de horários
+- Confirmar ou cancelar consultas com um clique
+- Dashboard com estatísticas gerais
+- Página de médicos com cards por especialidade
+- Paginação na listagem
+---
+ 
+##  Tecnologias
+ 
+**Frontend**
+- React 18
+- CSS puro com variáveis customizadas (sem framework)
+- Fetch API para comunicação com o backend
+**Backend**
+- Node.js
+- Express
+- UUID para geração de IDs únicos
+- CORS para comunicação cross-origin
+---
+ 
+##  Estrutura do projeto
+ 
+```
+agendamento/
+├── backend/
+│   ├── server.js        # Servidor Express com todas as rotas
+│   └── package.json
+│
+└── frontend/
+    ├── public/
+    │   └── index.html
+    ├── src/
+    │   ├── styles/
+    │   │   ├── global.css       # Variáveis CSS e reset
+    │   │   ├── layout.css       # Sidebar, dashboard, grid
+    │   │   └── components.css   # Botões, tabela, form, modal
+    │   ├── services/
+    │   │   └── api.js           # Camada de comunicação HTTP
+    │   ├── components/
+    │   │   └── FormularioConsulta.jsx
+    │   ├── pages/
+    │   │   ├── Dashboard.jsx
+    │   │   ├── Consultas.jsx
+    │   │   └── Medicos.jsx
+    │   ├── App.jsx
+    │   └── index.js
+    └── package.json
+```
+ 
+---
+ 
+##  Como rodar localmente
+ 
+### Pré-requisitos
+ 
+- [Node.js](https://nodejs.org/) v18 ou superior
+- npm (já vem com o Node)
+### 1. Clone o repositório
+ 
+```bash
+git clone https://github.com/seu-usuario/medagenda.git
+cd medagenda
+```
+ 
+### 2. Inicie o backend
+ 
+```bash
+cd backend
+npm install
+npm start
+```
+ 
+O servidor vai rodar em `http://localhost:3001`
+ 
+### 3. Inicie o frontend
+ 
+Abra um novo terminal:
+ 
+```bash
+cd frontend
+npm install
+npm start
+```
+ 
+A aplicação vai abrir em `http://localhost:3000`
+ 
+---
+ 
+##  Endpoints da API
+ 
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| GET | `/api/consultas` | Lista todas as consultas |
+| GET | `/api/consultas?status=pendente` | Filtra por status |
+| GET | `/api/consultas/:id` | Busca consulta por ID |
+| POST | `/api/consultas` | Cria nova consulta |
+| PUT | `/api/consultas/:id` | Atualiza consulta |
+| PATCH | `/api/consultas/:id/status` | Atualiza apenas o status |
+| DELETE | `/api/consultas/:id` | Remove consulta |
+| GET | `/api/medicos` | Lista médicos disponíveis |
+| GET | `/api/horarios-disponiveis` | Horários livres por médico e data |
+| GET | `/api/dashboard` | Estatísticas gerais |
+ 
+### Exemplo de requisição
+ 
+```bash
+# Criar uma nova consulta
+curl -X POST http://localhost:3001/api/consultas \
+  -H "Content-Type: application/json" \
+  -d '{
+    "paciente": "Maria Silva",
+    "medico": "Dr. Carlos Mendes",
+    "especialidade": "Cardiologia",
+    "data": "2025-05-10",
+    "horario": "09:00",
+    "telefone": "(86) 99999-0001"
+  }'
+```
+ 
+---
+ 
+##  Observações
+ 
+> Os dados são armazenados em memória (array JavaScript). Reiniciar o servidor apaga as consultas cadastradas. Para um ambiente de produção, substitua pelo banco de dados de sua preferência (PostgreSQL, MongoDB, etc.).
+ 
+---
+ 
+##  Licença
+ 
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
