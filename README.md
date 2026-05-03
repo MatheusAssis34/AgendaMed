@@ -94,6 +94,3 @@ curl -X POST http://localhost:3001/api/consultas \
   }'
 Observações
 Os dados são armazenados em memória (array JavaScript). Reiniciar o servidor apaga as consultas cadastradas. Para um ambiente de produção, substitua pelo banco de dados de sua preferência (PostgreSQL, MongoDB, etc.).
-
-Licença
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
