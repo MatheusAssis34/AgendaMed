@@ -70,16 +70,16 @@ A aplicação vai abrir em http://localhost:3000
 
 Endpoints da API
 Método	Endpoint	Descrição
-GET	/api/consultas	Lista todas as consultas
-GET	/api/consultas?status=pendente	Filtra por status
-GET	/api/consultas/:id	Busca consulta por ID
-POST	/api/consultas	Cria nova consulta
-PUT	/api/consultas/:id	Atualiza consulta
-PATCH	/api/consultas/:id/status	Atualiza apenas o status
-DELETE	/api/consultas/:id	Remove consulta
-GET	/api/medicos	Lista médicos disponíveis
-GET	/api/horarios-disponiveis	Horários livres por médico e data
-GET	/api/dashboard	Estatísticas gerais
+GET	/api/consultas -Lista todas as consultas,
+GET	/api/consultas?status=pendente-Filtra por status,
+GET	/api/consultas/:id-Busca consulta por ID,
+POST	/api/consultas-Cria nova consulta,
+PUT	/api/consultas/:id-Atualiza consulta,
+PATCH	/api/consultas/:id/status-Atualiza apenas o status,
+DELETE	/api/consultas/:id-Remove consulta,
+GET	/api/medicos-Lista médicos disponíveis,
+GET	/api/horarios-disponiveis-Horários livres por médico e data,
+GET	/api/dashboard-Estatísticas gerais
 Exemplo de requisição
 # Criar uma nova consulta
 curl -X POST http://localhost:3001/api/consultas \
