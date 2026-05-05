@@ -12,9 +12,10 @@ Confirmar ou cancelar consultas com um clique
 Dashboard com estatísticas gerais
 Página de médicos com cards por especialidade
 Paginação na listagem
+
+
 Tecnologias
 Frontend
-
 React 18
 CSS puro com variáveis customizadas (sem framework)
 Fetch API para comunicação com o backend Backend
@@ -22,31 +23,7 @@ Node.js
 Express
 UUID para geração de IDs únicos
 CORS para comunicação cross-origin
-Estrutura do projeto
-agendamento/
-├── backend/
-│   ├── server.js        # Servidor Express com todas as rotas
-│   └── package.json
-│
-└── frontend/
-    ├── public/
-    │   └── index.html
-    ├── src/
-    │   ├── styles/
-    │   │   ├── global.css       # Variáveis CSS e reset
-    │   │   ├── layout.css       # Sidebar, dashboard, grid
-    │   │   └── components.css   # Botões, tabela, form, modal
-    │   ├── services/
-    │   │   └── api.js           # Camada de comunicação HTTP
-    │   ├── components/
-    │   │   └── FormularioConsulta.jsx
-    │   ├── pages/
-    │   │   ├── Dashboard.jsx
-    │   │   ├── Consultas.jsx
-    │   │   └── Medicos.jsx
-    │   ├── App.jsx
-    │   └── index.js
-    └── package.json
+
 Como rodar localmente
 Pré-requisitos
 Node.js v18 ou superior
