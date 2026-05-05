@@ -14,7 +14,7 @@ Página de médicos com cards por especialidade
 Paginação na listagem
 
 
-Tecnologias
+Tecnologias:
 Frontend
 React 18
 CSS puro com variáveis customizadas (sem framework)
@@ -24,8 +24,8 @@ Express
 UUID para geração de IDs únicos
 CORS para comunicação cross-origin
 
-Como rodar localmente
-Pré-requisitos
+Como rodar localmente:
+Pré-requisitos -
 Node.js v18 ou superior
 npm (já vem com o Node)
 1. Clone o repositório
